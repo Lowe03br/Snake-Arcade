@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Snake.io</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="copyright">
+    <p>Developed by leos4ntos_</p>
+    <p>© 2025 All rights reserved</p>
+    </div>
+  <div id="menu">
+  <div style="display: flex; align-items: center; gap: 0px;">
+  <img id="logo-snake" src="favicon.png" alt="Cobrinha" style="width: 70px;">
+  <h1 style="margin: 0;">Snake Arcade</h1>
+</div>
+   <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+  <label for="color" style="color: white;">Cor:</label>
+  <select id="color" onchange="playClickSound()">
+    <option value="limegreen">Verde</option>
+    <option value="cyan">Ciano</option>
+    <option value="yellow">Amarelo</option>
+    <option value="magenta">Magenta</option>
+    <option value="white">Branco</option>
+    <option value="red">Vermelho</option>
+
+    <select><label for="theme" style="color: white;">Tema:</label>
+<select id="theme" onchange="playClickSound()">
+  <option value="dark">Escuro</option>
+  <option value="light">Claro</option>
+</select>
+  </select>
+  
+</select>
+  <label for="skin" style="color: white;">Skin:</label>
+<select id="skin" onchange="playClickSound()">
+  <option value="none">Nenhuma</option>
+  <option value="bandeiras/brasil.png">Brasil 🇧🇷</option>
+  <option value="bandeiras/eua.png">EUA 🇺🇸</option>
+  <option value="bandeiras/japao.png">Japão 🇯🇵</option>
+  <option value="bandeiras/argentina.png">Argentina 🇦🇷</option>
+  <option value="bandeiras/canada.png">Canadá 🇨🇦</option>
+</select>
+</div>
+  <button onclick="startGame(); playClickSound();">Jogar</button>
+</div>
+  </div>
+
+  <div id="game-area">
+    <div id="score">Pontuação: 0</div>
+    <div id="time">Tempo: 0s</div>
+    <div id="game-board"></div>
+    <div id="joystick-container">
+  <div id="joystick"></div>
+  <button id="btn-pause" class="pause-btn">Pausar</button>
+  <button id="btn-ranking" class="ranking-btn">Ver Ranking</button>
+  <div id="ranking-popup" class="hidden">
+  <h2>Ranking / Recordes</h2>
+  <p id="best-score-record"></p>
+  <p id="best-time-record"></p>
+  <button id="close-ranking">Fechar</button>
+</div>
+</div>
+
+  <div id="gameover-popup" class="hidden">
+    <h2>GAME OVER</h2>
+    <p id="final-score"></p>
+    <p id="final-time"></p>
+    <p id="best-score"></p>
+    <button onclick="restartGame(); playClickSound();">Reiniciar Jogo</button>
+  </div>
+
+  <div id="volume-panel">
+  <div>
+    🎵 Música:
+    <button onclick="changeMusicVolume(-0.1)">➖</button>
+    <button onclick="changeMusicVolume(0.1)">➕</button>
+  </div>
+  <div>
+    🎧 Efeitos:
+    <button onclick="changeEffectsVolume(-0.1)">➖</button>
+    <button onclick="changeEffectsVolume(0.1)">➕</button>
+  </div>
+</div>
+
+  <!-- Sons -->
+  <audio id="eat-sound" src="som de comer.mp3" preload="auto"></audio>
+  <audio id="gameover-sound" src="som de morte.mp3" preload="auto"></audio>
+  <audio id="click-sound" src="click sound.mp3" preload="auto"></audio>
+  <audio id="background-music" src="musica de fundo 8 bit.mp3" preload="auto" loop></audio>
+
+  <script src="script.js"></script>
+  <div id="pause-overlay" class="hidden">
+  <h2>JOGO PAUSADO</h2>
+  <p>Pressione ESC para continuar</p>
+</div>
+</body>
+</html>

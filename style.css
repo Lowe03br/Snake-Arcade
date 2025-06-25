@@ -1,0 +1,422 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 100px;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+  display: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 0 20px #00ffcc66;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+
+#menu select, #menu button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#score {
+  margin: 10px;
+  font-size: 1.2rem;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  gap: 1px;
+  background-color: #333;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  background-color: #222;
+}
+
+.snake {
+  background-color: limegreen;
+  border-radius: 4px;
+}
+
+.food {
+  background-color: red;
+  border-radius: 50%;
+}
+
+#mobile-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#mobile-controls button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+#game-area {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#copyright {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  font-size: 0.8rem;
+  text-align: right;
+  opacity: 0.7;
+}
+
+#copyright p {
+  margin: 2px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#gameover-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #222;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  z-index: 999;
+}
+
+#gameover-popup button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#gameover-popup button:hover {
+  background-color: #666;
+}
+
+#menu {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#menu.paused {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Painel no canto inferior esquerdo */
+#volume-panel {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #00ffcc88;
+  z-index: 1000;
+}
+
+#volume-panel button {
+  margin: 0 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border: none;
+  background-color: #222;
+  color: white;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+#volume-panel button:hover {
+  background-color: #444;
+}
+
+/* Botão Jogar com brilho pulsante */
+#menu button {
+  background-color: #00ffcc;
+  border: none;
+  padding: 10px 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #00ffcc;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ffcc;
+  }
+}
+
+/* Seletor com glow */
+select {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #111;
+  color: white;
+  box-shadow: 0 0 6px #00ffcc;
+  transition: box-shadow 0.3s;
+}
+
+select:focus {
+  box-shadow: 0 0 12px #00ffcc;
+}
+
+#touch-controls {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#touch-controls .row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
+  image-rendering: pixelated;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pause-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(17, 17, 17, 0.9);
+  color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 999;
+  box-shadow: 0 0 20px #00ffcc;
+  font-family: Arial, sans-serif;
+  animation: pulse 2s infinite;
+}
+
+#pause-overlay h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+#pause-overlay p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* Esconde por padrão */
+#joystick-container {
+  display: none;
+}
+
+/* Mostra só em telas menores (ex: até 768px) */
+@media (max-width: 768px) {
+  #joystick-container {
+    position: fixed;
+    bottom: 60px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    touch-action: none;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #joystick {
+    width: 60px;
+    height: 60px;
+    background-color: #00ffcc;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.1s linear;
+  }
+}
+
+/* Animação de brilho para a cobrinha da logo */
+@keyframes logoBlink {
+  0%, 100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.7);
+    transform: scale(1.05);
+  }
+}
+
+#logo-snake {
+  animation: logoBlink 1.5s infinite ease-in-out;
+}
+
+body.light-mode {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+#game-board.light-mode {
+  background-color: #ddd;
+}
+
+.cell.light-mode {
+  background-color: #eee;
+}
+
+.snake.light-mode {
+  box-shadow: 0 0 6px #000;
+}
+
+#volume-panel.light-mode,
+#menu.light-mode,
+#pause-overlay.light-mode,
+#gameover-popup.light-mode {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+
+.pause-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1001;
+  padding: 8px 15px;
+  font-size: 16px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: black;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse 2s infinite;
+}
+
+.ranking-btn {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  z-index: 1001;
+  padding: 8px 15px;
+  font-size: 16px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: black;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse 2s infinite;
+}
+
+#ranking-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #222;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffcc;
+  text-align: center;
+  z-index: 1002;
+  width: 300px;
+}
+
+#ranking-popup.hidden {
+  display: none;
+}
+
+#ranking-popup button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ranking-popup button:hover {
+  background-color: #666;
+}
